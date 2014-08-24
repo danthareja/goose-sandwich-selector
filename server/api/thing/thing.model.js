@@ -9,4 +9,6 @@ var ThingSchema = new Schema({
   active: Boolean
 });
 
-module.exports = mongoose.model('Thing', ThingSchema);
+var Thing = mongoose.model('Thing', ThingSchema);
+
+module.exports = Thing;
