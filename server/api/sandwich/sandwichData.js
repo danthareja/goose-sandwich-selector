@@ -6,7 +6,7 @@ module.exports =
     "meat":[
       "eggs",
       "bacon",
-      "steak",
+      "cheesesteak",
     ],
     "cheese":"american",
     "sauce":[
@@ -22,7 +22,7 @@ module.exports =
     "meat":[
       "eggs",
       "bacon",
-      "steak",
+      "cheesesteak",
     ],
     "cheese":"swiss",
     "sauce":[
@@ -38,7 +38,7 @@ module.exports =
     "meat":[
       "eggs",
       "bacon",
-      "steak",
+      "cheesesteak",
     ],
     "cheese":"provolone",
     "sauce":[
@@ -773,7 +773,7 @@ module.exports =
     "name":"Wambulance",
     "bread":"hoagie",
     "meat":[
-      "santa",
+      "santa fe turkey",
       "roast beef",
       "bacon",
     ],
