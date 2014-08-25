@@ -5,20 +5,6 @@ var Sandwich = require('./sandwich.model');
 var config = require('../../config/environment');
 var auth = require('../../auth/auth.service');
 
-// Find subset of sandwiches
-// exports.getSubset = function(req, res) {
-
-//   console.log(req.body);
-//   res.send(200)
-// };
-
-// // Get list of all sandwiches
-// exports.getAll = function(req, res) {
-
-// }
-
-
-
 // Get list of sandwichs
 exports.index = function(req, res) {
   var meat = req.query.meat;

@@ -9,6 +9,7 @@ angular.module('gooseSandwichApp')
         controller: 'MainCtrl'
       });
   })
+
   .factory('Tweet', function($http) {
     var attach = {
 
@@ -25,22 +26,39 @@ angular.module('gooseSandwichApp')
 
     return attach;
   })
-  .factory('Sandwich', function($http) {
-    var attach = {
 
-      getSandwich: function(meat, cheese, sauce) {
-        //start processing here (spin wheel);
+  .factory('Sandwich', function($http, $window, $state, localStorageService) {
+
+    var setCurrentSandwich = function(newSandwich) {
+      // Use local storage to persist sandwich data through auth and refreshes
+      localStorageService.set('sandwich', newSandwich);
+      $state.go('sandwich');
+      console.log(localStorageService.get('sandwich'));
+    };
+      
+    // Array value randomizer helper function
+    var selectOneFrom = function(array, callback) {
+      var item = array[Math.floor(Math.random() * array.length)];
+      callback(item);
+    };
+
+    var attach = {
+      getMatchingSandwich: function(meat, cheese, sauce) {
         var sandwichPrefs = {
           meat: meat,
           cheese: cheese,
           sauce: sauce
         };
 
+        // Stash preferences for spin again
+        localStorageService.set('sandwichPrefs', sandwichPrefs);
+
+        // GET request with query parameters will match only those preferences
         $http.get('/api/sandwiches', {
           params: sandwichPrefs
         })
-        .success(function(data){
-          console.log("Got sandwiches!", data);
+        .success(function(sandwiches){
+          selectOneFrom(sandwiches, setCurrentSandwich); // Call setCurrentSandwich so we can store the data and access it across controllers
         })
         .error(function(err) {
           console.log("Error getting sandwiches", err);
@@ -48,17 +66,15 @@ angular.module('gooseSandwichApp')
       },
 
       getRandomSandwich: function() {
-        //start processing here (spin wheel);
- 
-         $http.get('/api/sandwiches')
-        .success(function(data){
-          console.log("Got sandwiches!", data);
+        // GET request withOUT query parameters will return ALL sandwiches
+        $http.get('/api/sandwiches')
+        .success(function(sandwiches){
+          selectOneFrom(sandwiches, setCurrentSandwich); // Call setCurrentSandwich so we can store the data and access it across controllers
         })
         .error(function(err) {
           console.log("Error getting sandwiches", err);
         });
       },
-
     };
     
     return attach;

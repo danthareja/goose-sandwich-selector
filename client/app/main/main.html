@@ -30,7 +30,10 @@
         <label style="text-transform: capitalize" ng-repeat="sauce in sauceList" class="btn btn-primary" ng-model="sauceRadio.model" btn-radio="sauce">{{sauce}}</label>
     </div>
   </div>
-  <button type="button" class="btn btn-success btn-lg" ng-click="getSandwich()">Find me a sandwich!</button>
+</div>
+
+<div class="container">
+  <button type="button" class="btn btn-success btn-lg" ng-click="getMatchingSandwich()">Find me a sandwich!</button>
   <button type="button" class="btn btn-warning btn-lg" ng-click="getRandomSandwich()">Surprise me!</button>
 </div>
 

@@ -2,10 +2,16 @@
 
 angular.module('gooseSandwichApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }];
+    $scope.menu = [
+    // {
+    //   'title': 'Home',
+    //   'link': '/'
+    // },
+    // {
+    //   'title': 'Sandwich',
+    //   'link': '/sandwich'
+    // }
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
@@ -14,7 +20,7 @@ angular.module('gooseSandwichApp')
 
     $scope.logout = function() {
       Auth.logout();
-      $location.path('/login');
+      $location.path('/');
     };
 
     $scope.isActive = function(route) {

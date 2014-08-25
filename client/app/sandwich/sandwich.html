@@ -1,0 +1,31 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <!-- TODO: Randomize this text, polish it -->
+    <h1>How does a {{sandwich.name}} sound?</h1> 
+  </div>
+</header>
+
+<div class="container">
+  <div class="col-md-12">
+    <div>
+      <a ng-hide="isLoggedIn()"class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">
+        <i class="fa fa-twitter"></i> Login to Tweet your order to tony
+      </a>
+      <a ng-show="isLoggedIn()" class="btn btn-twitter" href="" ng-click="orderSandwich()">
+        <i class="fa fa-twitter"></i> Tweet Tony!
+      </a>
+    </div>
+    <button type="button" class="btn btn-warning btn-lg" ng-click="spinAgain()">Spin again!</button>
+  </div>
+</div>
+
+
+<footer class="footer">
+  <div class="container">
+      <p>Goose Sandwich Selector v0.0.1 | Made by 
+        <a href="https://twitter.com/dandougdot">@dandougdot</a> |
+         <a href="https://github.com/danthareja/goose-sandwich-selector">View on Github</a></p>
+  </div>
+</footer>
