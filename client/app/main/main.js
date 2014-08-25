@@ -12,7 +12,7 @@ angular.module('gooseSandwichApp')
   .factory('Tweet', function($http) {
     var attach = {
       sendTweet: function(order) {
-        $http.post('/api/sandwiches/tweet', order)
+        $http.post('/api/users/tweet', order)
         .success(function(){
           console.log("Tweet away!");
         })
