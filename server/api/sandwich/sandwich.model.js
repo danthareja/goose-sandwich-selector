@@ -21,5 +21,4 @@ Sandwich.create(sandwichData, function(err) {
   console.log("New sandwiches created!");
 });
 
-
 module.exports = Sandwich;

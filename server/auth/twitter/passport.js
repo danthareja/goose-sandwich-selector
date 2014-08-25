@@ -1,7 +1,7 @@
 exports.setup = function (User, config) {
   var passport = require('passport');
   var TwitterStrategy = require('passport-twitter').Strategy;
-
+  console.log("twitter passport.js called");
   passport.use(new TwitterStrategy({
     consumerKey: config.twitter.clientID,
     consumerSecret: config.twitter.clientSecret,
@@ -11,6 +11,7 @@ exports.setup = function (User, config) {
     User.findOne({
       'twitter.id_str': profile.id
     }, function(err, user) {
+      console.log("user", user);
       if (err) {
         return done(err);
       }
