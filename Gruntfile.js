@@ -1,10 +1,10 @@
-// Generated on 2014-08-24 using generator-angular-fullstack 2.0.10
+// Generated on 2014-08-25 using generator-angular-fullstack 2.0.10
 'use strict';
 
 module.exports = function (grunt) {
   var localConfig;
   try {
-    localConfig = require('./server/config/local.env.js');
+    localConfig = require('./server/config/local.env');
   } catch(e) {
     localConfig = {};
   }
