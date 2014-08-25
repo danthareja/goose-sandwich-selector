@@ -8,10 +8,10 @@ var mongoose = require('mongoose'),
 var SandwichSchema = new Schema({
   name: String,
   bread: String,
-  meat: Array,
+  meat: [String],
   cheese: String,
-  sauce: Array,
-  veg: Array
+  sauce: [String],
+  veg: [String]
 });
 
 var Sandwich = mongoose.model('Sandwich', SandwichSchema);

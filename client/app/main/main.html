@@ -30,15 +30,8 @@
         <label style="text-transform: capitalize" ng-repeat="sauce in sauceList" class="btn btn-primary" ng-model="sauceRadio.model" btn-radio="sauce">{{sauce}}</label>
     </div>
   </div>
-<!--   <form class="thing-form">
-    <label>Order a sandwich at the Goose</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="What sandwich do you want?" ng-model="sandwich">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="orderSandwich()">Tweet Tony!</button>
-      </span>
-    </p>
-  </form> -->
+  <button type="button" class="btn btn-success btn-lg" ng-click="findSandwich()">Find me a sandwich!</button>
+<!--   <button type="button" class="btn btn-warning btn-lg" ng-click="findRandomSandwich()">Surprise me!</button> -->
 </div>
 
 <footer class="footer">

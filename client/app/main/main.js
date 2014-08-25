@@ -11,6 +11,7 @@ angular.module('gooseSandwichApp')
   })
   .factory('Tweet', function($http) {
     var attach = {
+
       sendTweet: function(order) {
         $http.post('/api/users/tweet', order)
         .success(function(){
@@ -19,8 +20,33 @@ angular.module('gooseSandwichApp')
         .error(function() {
           console.log("error sending tweet");
         });
-      }
+      },
     };
 
+    return attach;
+  })
+  .factory('Sandwich', function($http) {
+    var attach = {
+
+      findSandwich: function(meat, cheese, sauce) {
+        //start processing here (spin wheel);
+        var sandwichPrefs = {
+          meat: meat,
+          cheese: cheese,
+          sauce: sauce
+        };
+
+        $http.get('/api/sandwiches', {
+          params: sandwichPrefs
+        })
+        .success(function(data){
+          console.log("Got sandwiches!", data);
+        })
+        .error(function(err) {
+          console.log("Error getting sandwiches", err);
+        });
+      },
+    };
+    
     return attach;
   });

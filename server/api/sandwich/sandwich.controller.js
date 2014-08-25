@@ -5,12 +5,49 @@ var Sandwich = require('./sandwich.model');
 var config = require('../../config/environment');
 var auth = require('../../auth/auth.service');
 
+// Find subset of sandwiches
+// exports.getSubset = function(req, res) {
+
+//   console.log(req.body);
+//   res.send(200)
+// };
+
+// // Get list of all sandwiches
+// exports.getAll = function(req, res) {
+
+// }
+
+
+
 // Get list of sandwichs
 exports.index = function(req, res) {
-  Sandwich.find(function (err, sandwichs) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, sandwichs);
-  });
+  var meat = req.query.meat;
+  var cheese = req.query.cheese;
+  var sauce = req.query.sauce;
+
+  // Did query parameters come in?
+  if (!(meat || cheese || sauce)) {
+    Sandwich.find(function (err, sandwichs) {
+      if(err) { return handleError(res, err); }
+      return res.json(200, sandwichs);
+    });
+
+  // Search for subset
+  } else {
+    console.log('has query params');
+    // Check if cheese is any, if so don't include it in query
+    if (cheese === 'any') {
+      Sandwich.find({meat: meat, sauce: sauce}, function(err, sandwiches) {
+        if(err) { return handleError(res, err); }
+        return res.json(200, sandwiches);
+      });
+    } else {
+      Sandwich.find({meat: meat, cheese: cheese, sauce: sauce}, function(err, sandwiches) {
+        if(err) { return handleError(res, err); }
+        return res.json(200, sandwiches);
+      }); 
+    }
+  }
 };
 
 // Get a single sandwich

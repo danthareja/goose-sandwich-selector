@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gooseSandwichApp')
-  .controller('MainCtrl', function ($scope, Tweet) {
+  .controller('MainCtrl', function ($scope, Tweet, Sandwich) {
     $scope.meatList = ['bacon',
                     'buffalo chicken',
                     'cheesesteak',
@@ -40,10 +40,23 @@ angular.module('gooseSandwichApp')
                         'russian',
                         'tomato sauce'];
 
-    $scope.meatRadio = {model: undefined};
+    $scope.meatRadio = {model: 'bacon'};
     $scope.cheeseRadio = {model: 'any'};
     $scope.sauceRadio = {model: 'none'};
 
+    $scope.findSandwich = function() {
+      var meat = $scope.meatRadio.model;
+      var cheese = $scope.cheeseRadio.model;
+      var sauce = $scope.sauceRadio.model;
+
+      Sandwich.findSandwich(meat, cheese, sauce);
+
+      // then do something?
+    };
+
+    // $scope.findRandomSandwich = function() {
+      
+    // };
 
     $scope.orderSandwich = function() {
       // Maybe add some random tony compliment at the end? or Tony hashtag?
