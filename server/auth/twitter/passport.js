@@ -20,7 +20,9 @@ exports.setup = function (User, config) {
           username: profile.username,
           role: 'user',
           provider: 'twitter',
-          twitter: profile._json
+          twitter: profile._json,
+          twitterToken: token,
+          twitterTokenSecret: tokenSecret // TODO: Store this securely
         });
         user.save(function(err) {
           if (err) return done(err);

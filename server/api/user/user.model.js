@@ -16,6 +16,8 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   twitter: {},
+  twitterToken: String,
+  twitterTokenSecret: String,
   github: {}
 });
 

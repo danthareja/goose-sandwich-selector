@@ -2,6 +2,27 @@
 
 var _ = require('lodash');
 var Sandwich = require('./sandwich.model');
+var config = require('../../config/environment');
+var auth = require('../../auth/auth.service');
+var twit = require('twit');
+
+
+exports.tweet = function(req, res){
+  var tweet = req.body.tweet;
+  var user = req.user;
+
+  var twitter = new twit({
+    consumer_key: config.twitter.clientID,
+    consumer_secret: config.twitter.clientSecret,
+    access_token: user.twitterToken,
+    access_token_secret: user.twitterTokenSecret
+  });
+
+  twitter.post('statuses/update', { status: tweet }, function(err, data, response) {
+    console.log("Tweet sent successfully");
+    res.send(200);
+  });
+}
 
 // Get list of sandwichs
 exports.index = function(req, res) {

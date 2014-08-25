@@ -1,22 +1,12 @@
 'use strict';
 
 angular.module('gooseSandwichApp')
-  .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+  .controller('MainCtrl', function ($scope, Tweet) {
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-    });
-
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
+    $scope.sendTweet = function() {
+      var order = {tweet: "@dandougdot testing out a new product, want a " + $scope.sandwich + "?"};
+      Tweet.sendTweet(order);
+      $scope.sandwich = "";
     };
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
   });
