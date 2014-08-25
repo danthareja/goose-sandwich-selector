@@ -28,7 +28,7 @@ angular.module('gooseSandwichApp')
   .factory('Sandwich', function($http) {
     var attach = {
 
-      findSandwich: function(meat, cheese, sauce) {
+      getSandwich: function(meat, cheese, sauce) {
         //start processing here (spin wheel);
         var sandwichPrefs = {
           meat: meat,
@@ -46,6 +46,19 @@ angular.module('gooseSandwichApp')
           console.log("Error getting sandwiches", err);
         });
       },
+
+      getRandomSandwich: function() {
+        //start processing here (spin wheel);
+ 
+         $http.get('/api/sandwiches')
+        .success(function(data){
+          console.log("Got sandwiches!", data);
+        })
+        .error(function(err) {
+          console.log("Error getting sandwiches", err);
+        });
+      },
+
     };
     
     return attach;

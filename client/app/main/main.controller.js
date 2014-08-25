@@ -2,61 +2,24 @@
 
 angular.module('gooseSandwichApp')
   .controller('MainCtrl', function ($scope, Tweet, Sandwich) {
-    $scope.meatList = ['bacon',
-                    'buffalo chicken',
-                    'cheesesteak',
-                    'chicken',
-                    'corned beef',
-                    'eggs',
-                    'grilled chicken',
-                    'ham',
-                    'meatballs',
-                    'pepper ham',
-                    'pepperoni',
-                    'prosciutto',
-                    'pepper turkey',
-                    'roast beef',
-                    'santa fe turkey',
-                    'salami',
-                    'sausage',
-                    'turkey',];
-
-    $scope.cheeseList = ['any',
-                      'american',
-                      'cheddar',
-                      'cheddar jack',
-                      'muenster',
-                      'pepper jack',
-                      'provolone',
-                      'swiss'];
-
-    $scope.sauceList = ['none',
-                        'au jus',
-                        'barbecue',
-                        'hot sauce',
-                        'mayo',
-                        'mustard',
-                        'ranch',
-                        'russian',
-                        'tomato sauce'];
-
+    $scope.meatList = ['bacon', 'buffalo chicken', 'cheesesteak', 'chicken', 'corned beef', 'eggs', 'grilled chicken', 'ham', 'meatballs', 'pepper ham', 'pepperoni', 'prosciutto', 'pepper turkey', 'roast beef', 'santa fe turkey', 'salami', 'sausage', 'turkey'];
+    $scope.cheeseList = ['any', 'american', 'cheddar', 'cheddar jack', 'muenster', 'pepper jack', 'provolone', 'swiss'];
+    $scope.sauceList = ['none', 'au jus', 'barbecue', 'hot sauce', 'mayo', 'mustard', 'ranch', 'russian', 'tomato sauce'];
+    
     $scope.meatRadio = {model: 'bacon'};
     $scope.cheeseRadio = {model: 'any'};
     $scope.sauceRadio = {model: 'none'};
+    
+    $scope.getRandomSandwich =  Sandwich.getRandomSandwich;
 
-    $scope.findSandwich = function() {
+    $scope.getSandwich = function() {
       var meat = $scope.meatRadio.model;
       var cheese = $scope.cheeseRadio.model;
       var sauce = $scope.sauceRadio.model;
 
-      Sandwich.findSandwich(meat, cheese, sauce);
-
-      // then do something?
+      Sandwich.getSandwich(meat, cheese, sauce);
     };
 
-    // $scope.findRandomSandwich = function() {
-      
-    // };
 
     $scope.orderSandwich = function() {
       // Maybe add some random tony compliment at the end? or Tony hashtag?
