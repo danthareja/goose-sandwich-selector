@@ -4,12 +4,33 @@
   <div class="container">
     <h1>The Goose Sandwich Selector</h1>
     <p class="lead">Never ask "what should I order at the goose?" again</p>
-    <img src="assets/images/logo-small.png" alt="The Goose Wheel">
+    <!-- <img src="assets/images/logo-small.png" alt="The Goose Wheel"> -->
   </div>
 </header>
 
 <div class="container">
-  <form class="thing-form">
+  <div class="meatsContainer">
+    <h4>What meat are you feeling?</h4>
+    <div class="btn-group">
+      <pre>{{meatRadio}}</pre>
+      <label style="text-transform: capitalize" ng-repeat="meat in meatList" class="btn btn-primary" ng-model="meatRadio.model" btn-radio="meat">{{meat}}</label>
+    </div>
+  </div>
+  <div class="cheeseContainer">
+    <h4>Got a cheese preference?</h4>
+    <div class="btn-group">
+      <pre>{{cheeseRadio}}</pre>
+      <label ng-repeat="cheese in cheeseList" style="text-transform: capitalize" class="btn btn-primary" ng-model="cheeseRadio.model" btn-radio="cheese">{{cheese}}</label>
+    </div>
+  </div>
+  <div class="sauceContainer">
+    <h4>Wanna top it with anything?</h4>
+    <div class="btn-group">
+      <pre>{{sauceRadio}}</pre>
+        <label style="text-transform: capitalize" ng-repeat="sauce in sauceList" class="btn btn-primary" ng-model="sauceRadio.model" btn-radio="sauce">{{sauce}}</label>
+    </div>
+  </div>
+<!--   <form class="thing-form">
     <label>Order a sandwich at the Goose</label>
     <p class="input-group">
       <input type="text" class="form-control" placeholder="What sandwich do you want?" ng-model="sandwich">
@@ -17,7 +38,7 @@
         <button type="submit" class="btn btn-primary" ng-click="orderSandwich()">Tweet Tony!</button>
       </span>
     </p>
-  </form>
+  </form> -->
 </div>
 
 <footer class="footer">
