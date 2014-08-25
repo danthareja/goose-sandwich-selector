@@ -1,23 +1,28 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <header class="hero-unit" id="banner">
-  <div class="container">
-    <!-- TODO: Randomize this text, polish it -->
-    <h1>How does a {{sandwich.name}} sound?</h1> 
+  <div ng-show="sandwich===null" class="container">
+    <h2>We're sorry, we couldn't find a sandwich with that combo. Why don't you talk to Tony about making it a thing?</h2>
+     <h2><a style="color: #CCCCCC" href="/">or you could try a different combo</a>
+     </h2>
+  </div>  
+  <div ng-show="sandwich!==null" class="container">
+    <h1>How does a {{sandwich.name}} sound?</h1>
   </div>
 </header>
 
-<div class="container">
+<div ng-hide="sandwich===null" class="container">
   <div class="col-md-12">
     <div>
-      <a ng-hide="isLoggedIn()"class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">
+      <a ng-hide="isLoggedIn()"class="btn btn-twitter btn-lg" href="" ng-click="loginOauth('twitter')">
         <i class="fa fa-twitter"></i> Login to Tweet your order to tony
       </a>
-      <a ng-show="isLoggedIn()" class="btn btn-twitter" href="" ng-click="orderSandwich()">
+      <a ng-show="isLoggedIn()" class="btn btn-twitter btn-lg" href="" ng-click="orderSandwich()">
         <i class="fa fa-twitter"></i> Tweet Tony!
       </a>
     </div>
     <button type="button" class="btn btn-warning btn-lg" ng-click="spinAgain()">Spin again!</button>
+    <a href="/">Try a new combo</a>
   </div>
 </div>
 

@@ -2,8 +2,8 @@
 
 angular.module('gooseSandwichApp')
   .controller('SandwichCtrl', function ($scope, $window, Sandwich, Auth, Tweet, localStorageService) {
-    $scope.message = 'Hello';
     $scope.sandwich = localStorageService.get('sandwich');
+
     $scope.isLoggedIn = Auth.isLoggedIn;
 
     $scope.loginOauth = function(provider) {
@@ -15,7 +15,6 @@ angular.module('gooseSandwichApp')
       // hide sandwich, show spin animation for small amount of time, refresh scope.sandwich & show again
       Sandwich.getMatchingSandwich(sandwichPrefs.meat, sandwichPrefs.cheese, sandwichPrefs.sauce);
     };
-
 
     $scope.orderSandwich = function() {
       // Maybe add some random tony compliment at the end? or Tony hashtag?

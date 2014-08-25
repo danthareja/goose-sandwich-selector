@@ -12,21 +12,18 @@
   <div class="meatsContainer">
     <h4>What meat are you feeling?</h4>
     <div class="btn-group">
-      <pre>{{meatRadio}}</pre>
       <label style="text-transform: capitalize" ng-repeat="meat in meatList" class="btn btn-primary" ng-model="meatRadio.model" btn-radio="meat">{{meat}}</label>
     </div>
   </div>
   <div class="cheeseContainer">
     <h4>Got a cheese preference?</h4>
     <div class="btn-group">
-      <pre>{{cheeseRadio}}</pre>
       <label ng-repeat="cheese in cheeseList" style="text-transform: capitalize" class="btn btn-primary" ng-model="cheeseRadio.model" btn-radio="cheese">{{cheese}}</label>
     </div>
   </div>
   <div class="sauceContainer">
     <h4>Wanna top it with anything?</h4>
     <div class="btn-group">
-      <pre>{{sauceRadio}}</pre>
         <label style="text-transform: capitalize" ng-repeat="sauce in sauceList" class="btn btn-primary" ng-model="sauceRadio.model" btn-radio="sauce">{{sauce}}</label>
     </div>
   </div>
