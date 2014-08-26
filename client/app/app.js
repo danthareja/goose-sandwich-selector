@@ -6,7 +6,9 @@ angular.module('gooseSandwichApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'LocalStorageModule'
+  'LocalStorageModule',
+  'dialogs.main',
+  'dialogs.default-translations',
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider.otherwise('/');

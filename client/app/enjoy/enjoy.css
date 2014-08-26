@@ -1,3 +1,22 @@
 .centered {
   text-align: center
 }
+/* unvisited link */
+a:link.white{
+    color: #fff;
+}
+
+/* visited link */
+a:visited.white{
+    color: #fff;
+}
+
+/* mouse over link */
+a:hover.white{
+    color: #fff;
+}
+
+/* selected link */
+a:active.white{
+    color: #fff;
+}

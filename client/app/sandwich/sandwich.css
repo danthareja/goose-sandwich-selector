@@ -1,3 +1,29 @@
+.confirm-tweet .modal-header {
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+
+.confirm-tweet .modal-body {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 'Yes' button */
+.confirm-tweet .btn-default {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+
+}
+
+/* 'No' button */
+.confirm-tweet .btn-primary {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
+
 .thing-form {
     margin: 20px 0;
 }

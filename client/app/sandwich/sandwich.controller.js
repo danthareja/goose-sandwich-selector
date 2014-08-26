@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gooseSandwichApp')
-  .controller('SandwichCtrl', function ($scope, $window, $state, Sandwich, Auth, Tweet, localStorageService) {
+  .controller('SandwichCtrl', function ($scope, $window, $state, Sandwich, Auth, Tweet, localStorageService, dialogs) {
     $scope.sandwich = localStorageService.get('sandwich');
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isProcessing = false;
@@ -28,13 +28,15 @@ angular.module('gooseSandwichApp')
     };
 
     $scope.orderSandwich = function() {
-      var isConfirmed = confirm("Please make ABSOLUTELY SURE that you actually want this sandwich made. Tony WILL make it if you hit ok, don't leave him hanging.")
-      
-      if (isConfirmed) {
-        // Maybe add some random tony compliment at the end? or Tony hashtag?
+      // Makes use of angular-dialog-service. 
+      // Check out angular-dialog-service/dialogs-default-translations.js for other confirm text
+      var isConfirmed = dialogs.confirm("Do you really want this sandwich?", "Please make ABSOLUTELY SURE that you actually want this sandwich made. Tony WILL make it if you hit the green button. Don't leave him hanging by not picking up your order...", {
+        'windowClass': 'confirm-tweet'
+      });
+      isConfirmed.result.then(function(){
         var order = { tweet: "(at) thegoosemen I just ordered a " + $scope.sandwich.name + " from @thegoosewheel. #righttherethatis" };
         Tweet.sendTweet(order);
-      }
+      });
     };
 
   });

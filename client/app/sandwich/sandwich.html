@@ -5,7 +5,8 @@
     <h2>We're sorry, we couldn't find a sandwich with that combo. Why don't you talk to Tony about making it a thing?</h2>
      <h2><a style="color: #CCCCCC" href="/">or you could try a different combo</a>
      </h2>
-  </div>  
+  </div>
+  <!-- RANDOMIZE THESE SAYINGS -->
   <div ng-show="sandwich!==null && isProcessing===false" class="container">
     <h1>How does a {{sandwich.name}} sound?</h1>
   </div>
@@ -20,7 +21,7 @@
           <i class="fa fa-twitter"></i> Login to Tweet your order to Tony
         </a>
         <a ng-show="isLoggedIn()" class="btn btn-twitter btn-lg full-width" href="" ng-click="orderSandwich()">
-          <i class="fa fa-twitter"></i> Tweet Tony!
+          <i class="fa fa-twitter"></i> Yeah! Tweet Tony!
         </a>
       </div>
       <div class="col-md-4">
