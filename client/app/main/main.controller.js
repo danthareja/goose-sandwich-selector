@@ -10,11 +10,15 @@ angular.module('gooseSandwichApp')
     $scope.cheeseRadio = {model: 'any'};
     $scope.sauceRadio = {model: 'none'};
 
+    $scope.isProcessing = false;
+
     $scope.getRandomSandwich = function() {
+      $scope.isProcessing = true;
       Sandwich.getRandomSandwich(function(){
+        $scope.isProcessing = false;
         $state.go('sandwich');
       });
-    }
+    };
 
     $scope.getMatchingSandwich = function() {
       // Start processing animation here

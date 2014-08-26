@@ -4,7 +4,10 @@
   <div class="container">
     <h1>Discover a new favorite.</h1>
     <p class="lead">Featuring over 80 different goose sandwiches!</p>
-  <button type="button" class="btn btn-warning btn-xlarge" ng-click="getRandomSandwich()">Surprise me!</button>
+    <button ng-show="isProcessing!==true" type="button" class="btn btn-warning btn-xlarge" ng-click="getRandomSandwich()">Surprise me!</button>
+    <div ng-show="isProcessing===true" class="container">
+      <i class="fa fa-refresh fa-spin fa-5x"></i>
+    </div>
   </div>
 </header>
 
