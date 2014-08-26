@@ -23,11 +23,11 @@
       <div class="col-md-4">
         <h3 class="menu-selection">2. Pick a cheese, any cheese</h3>
         <div class="btn-group">
-          <label ng-repeat="cheese in cheeseList" style="text-transform: capitalize" class="btn btn-primary" ng-model="cheeseRadio.model" btn-radio="cheese">{{cheese}}</label>
+          <label ng-repeat="cheese in cheeseList" ng-disabled="!containsCheese(cheese)" style="text-transform: capitalize" class="btn btn-primary" ng-model="cheeseRadio.model" btn-radio="cheese">{{cheese}}</label>
         </div>
         <h3 class="menu-selection">3. Throw on some sauce</h3>
         <div class="btn-group">
-          <label style="text-transform: capitalize" ng-repeat="sauce in sauceList" class="btn btn-primary" ng-model="sauceRadio.model" btn-radio="sauce">{{sauce}}</label>
+          <label ng-repeat="sauce in sauceList" ng-disabled="!containsSauce(sauce)" style="text-transform: capitalize" class="btn btn-primary" ng-model="sauceRadio.model" btn-radio="sauce">{{sauce}}</label>
         </div>
       </div>
       <div class="col-md-4 col-middle">

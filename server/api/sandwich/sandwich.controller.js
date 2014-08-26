@@ -21,13 +21,26 @@ exports.index = function(req, res) {
   // Search for subset
   } else {
     console.log('has query params');
-    // Check if cheese is any, if so don't include it in query
-    if (cheese === 'any') {
+    // Check if cheese or meat is any, if so don't include it in query -- super sloppy. Refactor needed 
+    if (cheese === 'any' && meat === 'any') {
+      Sandwich.find({sauce: sauce}, function(err, sandwiches) {
+        if(err) { return handleError(res, err); }
+        return res.json(200, sandwiches);
+      })
+    }
+    else if (meat === 'any') {
+      Sandwich.find({cheese: cheese, sauce: sauce}, function(err, sandwiches) {
+        if(err) { return handleError(res, err); }
+        return res.json(200, sandwiches);
+      });
+    } 
+    else if (cheese === 'any') {
       Sandwich.find({meat: meat, sauce: sauce}, function(err, sandwiches) {
         if(err) { return handleError(res, err); }
         return res.json(200, sandwiches);
       });
-    } else {
+    }
+    else {
       Sandwich.find({meat: meat, cheese: cheese, sauce: sauce}, function(err, sandwiches) {
         if(err) { return handleError(res, err); }
         return res.json(200, sandwiches);

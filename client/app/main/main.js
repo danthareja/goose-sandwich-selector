@@ -39,7 +39,7 @@ angular.module('gooseSandwichApp')
       getAllSandwiches: function(callback) {
         $http.get('/api/sandwiches')
         .success(function(sandwiches){
-          callback(andwichs);
+          callback(sandwiches);
         })
         .error(function(err) {
           console.log("Error getting all sandwiches", err);
