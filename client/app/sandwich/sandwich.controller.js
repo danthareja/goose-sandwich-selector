@@ -21,9 +21,8 @@ angular.module('gooseSandwichApp')
       
       if (isConfirmed) {
         // Maybe add some random tony compliment at the end? or Tony hashtag?
-        var order = { tweet: "(at) thegoosemen the I just ordered a " + $scope.sandwich.name + " from @thegoosewheel. #righttherethatis" };
+        var order = { tweet: "(at) thegoosemen I just ordered a " + $scope.sandwich.name + " from @thegoosewheel. #righttherethatis" };
         Tweet.sendTweet(order);
-        $window.location.href = '/enjoy'
         // $state.go('enjoy');
       }
     };

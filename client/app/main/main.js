@@ -10,13 +10,14 @@ angular.module('gooseSandwichApp')
       });
   })
 
-  .factory('Tweet', function($http) {
+  .factory('Tweet', function($http, $state) {
     var attach = {
 
       sendTweet: function(order) {
         $http.post('/api/users/tweet', order)
         .success(function(){
           console.log("Tweet away!");
+          $state.go('enjoy');
         })
         .error(function() {
           console.log("error sending tweet");
