@@ -28,23 +28,22 @@ angular.module('gooseSandwichApp')
     return attach;
   })
 
-  .factory('Sandwich', function($http, $window, $state, localStorageService) {
+  .factory('Sandwich', function($http, $window, localStorageService) {
 
-    var setCurrentSandwich = function(newSandwich) {
-      // Use local storage to persist sandwich data through auth and refreshes
-      localStorageService.set('sandwich', newSandwich);
-      $state.go('sandwich');
-      console.log(localStorageService.get('sandwich'));
-    };
+    // var setCurrentSandwich = function(newSandwich) {
+    //   // Use local storage to persist sandwich data through auth and refreshes
+    //   localStorageService.set('sandwich', newSandwich);
+    //   $state.go('sandwich');
+    //   console.log(localStorageService.get('sandwich'));
+    // };
       
     // Array value randomizer helper function
-    var selectOneFrom = function(array, callback) {
-      var item = array[Math.floor(Math.random() * array.length)];
-      callback(item);
+    var selectOneFrom = function(array) {
+      return array[Math.floor(Math.random() * array.length)];
     };
 
     var attach = {
-      getMatchingSandwich: function(meat, cheese, sauce) {
+      getMatchingSandwich: function(meat, cheese, sauce, callback) {
         var sandwichPrefs = {
           meat: meat,
           cheese: cheese,
@@ -59,18 +58,23 @@ angular.module('gooseSandwichApp')
           params: sandwichPrefs
         })
         .success(function(sandwiches){
-          selectOneFrom(sandwiches, setCurrentSandwich); // Call setCurrentSandwich so we can store the data and access it across controllers
+          var newSandwich = selectOneFrom(sandwiches);
+          localStorageService.set('sandwich', newSandwich);
+          callback(newSandwich);
         })
         .error(function(err) {
           console.log("Error getting sandwiches", err);
         });
       },
 
-      getRandomSandwich: function() {
+      getRandomSandwich: function(callback) {
         // GET request withOUT query parameters will return ALL sandwiches
         $http.get('/api/sandwiches')
         .success(function(sandwiches){
-          selectOneFrom(sandwiches, setCurrentSandwich); // Call setCurrentSandwich so we can store the data and access it across controllers
+          localStorageService.remove('sandwichPrefs');
+          var newSandwich = selectOneFrom(sandwiches);
+          localStorageService.set('sandwich', newSandwich);
+          callback(newSandwich);
         })
         .error(function(err) {
           console.log("Error getting sandwiches", err);

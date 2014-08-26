@@ -13,6 +13,18 @@
     letter-spacing: -1px;
 }
 
+.tweet {
+    border-color: #96641C;
+}
+
+.row-add-margin {
+    margin-top: 35px; 
+}
+
+.row-add-small-margin {
+    margin-top: 15px;
+}
+
 .hero-unit {
     position: relative;
     padding: 30px 15px;
@@ -22,9 +34,17 @@
     background: #4393B9;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .footer {
     text-align: center;
     padding: 30px 0;
     margin-top: 70px;
     border-top: 1px solid #E5E5E5;
+}
+
+.white {
+    color:#F5F5F5;
 }

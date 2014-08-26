@@ -6,25 +6,32 @@
      <h2><a style="color: #CCCCCC" href="/">or you could try a different combo</a>
      </h2>
   </div>  
-  <div ng-show="sandwich!==null" class="container">
+  <div ng-show="sandwich!==null && isProcessing===false" class="container">
     <h1>How does a {{sandwich.name}} sound?</h1>
   </div>
-</header>
-
-<div ng-hide="sandwich===null" class="container">
-  <div class="col-md-12">
-    <div>
-      <a ng-hide="isLoggedIn()"class="btn btn-twitter btn-lg" href="" ng-click="loginOauth('twitter')">
-        <i class="fa fa-twitter"></i> Login to Tweet your order to tony
-      </a>
-      <a ng-show="isLoggedIn()" class="btn btn-twitter btn-lg" href="" ng-click="orderSandwich()">
-        <i class="fa fa-twitter"></i> Tweet Tony!
-      </a>
-    </div>
-    <button type="button" class="btn btn-warning btn-lg" ng-click="spinAgain()">Spin again!</button>
-    <a href="/">Try a new combo</a>
+  <div ng-show="isProcessing===true" class="container">
+    <h1>How does a {{sandwich.name}} sound?</h1>
   </div>
-</div>
+
+  <div ng-hide="sandwich===null" class="container">
+    <div class="row row-add-margin">
+      <div class="col-md-4 col-md-offset-2">
+        <a ng-hide="isLoggedIn()"class="btn btn-twitter btn-lg full-width" href="" ng-click="loginOauth('twitter')">
+          <i class="fa fa-twitter"></i> Login to Tweet your order to Tony
+        </a>
+        <a ng-show="isLoggedIn()" class="btn btn-twitter btn-lg full-width" href="" ng-click="orderSandwich()">
+          <i class="fa fa-twitter"></i> Tweet Tony!
+        </a>
+      </div>
+      <div class="col-md-4">
+        <button type="button" class="btn btn-warning btn-lg full-width tweet" ng-click="spinAgain()">Meh, let's try again</button>
+      </div>
+    </div>
+    <div class="row row-add-small-margin">
+      <!-- <a class="white" href="/">Try a new combo</a> -->
+    </div>
+  </div>
+</header>
 
 
 <footer class="footer">

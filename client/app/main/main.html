@@ -2,36 +2,35 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>The Goose Sandwich Selector</h1>
-    <p class="lead">Never ask "what should I order at the goose?" again</p>
-    <!-- <img src="assets/images/logo-small.png" alt="The Goose Wheel"> -->
+    <h1>Discover a new favorite.</h1>
+    <p class="lead">Featuring over 80 different goose sandwiches!</p>
+  <button type="button" class="btn btn-warning btn-xlarge" ng-click="getRandomSandwich()">Surprise me!</button>
   </div>
 </header>
 
 <div class="container">
-  <div class="meatsContainer">
-    <h4>What meat are you feeling?</h4>
-    <div class="btn-group">
-      <label style="text-transform: capitalize" ng-repeat="meat in meatList" class="btn btn-primary" ng-model="meatRadio.model" btn-radio="meat">{{meat}}</label>
+  <h2>Feeling picky? Narrow your choices</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="menu-selection">1. What meat would you like?</h3>
+      <div class="btn-group">
+        <label style="text-transform: capitalize" ng-repeat="meat in meatList" class="btn btn-primary" ng-model="meatRadio.model" btn-radio="meat">{{meat}}</label>
+      </div>
     </div>
+      <div class="col-md-4">
+        <h3 class="menu-selection">2. Pick a cheese, any cheese</h3>
+        <div class="btn-group">
+          <label ng-repeat="cheese in cheeseList" style="text-transform: capitalize" class="btn btn-primary" ng-model="cheeseRadio.model" btn-radio="cheese">{{cheese}}</label>
+        </div>
+        <h3 class="menu-selection">3. Throw on some sauce</h3>
+        <div class="btn-group">
+          <label style="text-transform: capitalize" ng-repeat="sauce in sauceList" class="btn btn-primary" ng-model="sauceRadio.model" btn-radio="sauce">{{sauce}}</label>
+        </div>
+      </div>
+      <div class="col-md-4 col-middle">
+        <button type="button" class="btn btn-success btn-lg center-block get-sandwich" ng-click="getMatchingSandwich()">Find me a tasty sandwich</button>
+      </div>
   </div>
-  <div class="cheeseContainer">
-    <h4>Got a cheese preference?</h4>
-    <div class="btn-group">
-      <label ng-repeat="cheese in cheeseList" style="text-transform: capitalize" class="btn btn-primary" ng-model="cheeseRadio.model" btn-radio="cheese">{{cheese}}</label>
-    </div>
-  </div>
-  <div class="sauceContainer">
-    <h4>Wanna top it with anything?</h4>
-    <div class="btn-group">
-        <label style="text-transform: capitalize" ng-repeat="sauce in sauceList" class="btn btn-primary" ng-model="sauceRadio.model" btn-radio="sauce">{{sauce}}</label>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <button type="button" class="btn btn-success btn-lg" ng-click="getMatchingSandwich()">Find me a sandwich!</button>
-  <button type="button" class="btn btn-warning btn-lg" ng-click="getRandomSandwich()">Surprise me!</button>
 </div>
 
 <footer class="footer">

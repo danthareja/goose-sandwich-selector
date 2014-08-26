@@ -13,6 +13,24 @@
     letter-spacing: -1px;
 }
 
+.get-sandwich {
+    margin-top: 30%
+}
+
+.btn-xlarge {
+    /*margin-top:20px;*/
+    padding: 18px 28px;
+    font-size: 48px; /*//change this to your desired size*/
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}
+
+.col-middle {
+    vertical-align: middle;
+}
+
 .hero-unit {
     position: relative;
     padding: 30px 15px;
@@ -20,6 +38,10 @@
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
     background: #4393B9;
+}
+
+.menu-selection {
+    color: #AAA;
 }
 
 .footer {

@@ -3,17 +3,28 @@
 angular.module('gooseSandwichApp')
   .controller('SandwichCtrl', function ($scope, $window, $state, Sandwich, Auth, Tweet, localStorageService) {
     $scope.sandwich = localStorageService.get('sandwich');
-
     $scope.isLoggedIn = Auth.isLoggedIn;
+    $scope.isProcessing = false;
 
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;
     };
 
     $scope.spinAgain = function() {
-      var sandwichPrefs = localStorageService.get('sandwichPrefs');
+      $scope.isProcessing = true;
       // hide sandwich, show spin animation for small amount of time, refresh scope.sandwich & show again
-      Sandwich.getMatchingSandwich(sandwichPrefs.meat, sandwichPrefs.cheese, sandwichPrefs.sauce);
+      var sandwichPrefs = localStorageService.get('sandwichPrefs');
+      if (sandwichPrefs) {
+        Sandwich.getMatchingSandwich(sandwichPrefs.meat, sandwichPrefs.cheese, sandwichPrefs.sauce, function() {
+          $scope.isProcessing = false;
+          $scope.sandwich = localStorageService.get('sandwich');
+        });
+      } else {
+        Sandwich.getRandomSandwich(function() {
+          $scope.isProcessing = false;
+          $scope.sandwich = localStorageService.get('sandwich');
+        });
+      }
     };
 
     $scope.orderSandwich = function() {
