@@ -16,9 +16,14 @@ var SandwichSchema = new Schema({
 
 var Sandwich = mongoose.model('Sandwich', SandwichSchema);
 
-Sandwich.create(sandwichData, function(err) {
-  if (err) console.log(err);
-  console.log("New sandwiches created!");
+// Only create more sandwiches if db is currently empty
+Sandwich.find({}, function(err, sandwiches) {
+  if (!sandwiches[0]) {
+    Sandwich.create(sandwichData, function(err) {
+      if (err) console.log(err);
+      console.log("New sandwiches created!");
+    });
+  }
 });
 
 module.exports = Sandwich;

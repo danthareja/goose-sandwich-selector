@@ -29,13 +29,6 @@ angular.module('gooseSandwichApp')
   })
 
   .factory('Sandwich', function($http, $window, localStorageService) {
-
-    // var setCurrentSandwich = function(newSandwich) {
-    //   // Use local storage to persist sandwich data through auth and refreshes
-    //   localStorageService.set('sandwich', newSandwich);
-    //   $state.go('sandwich');
-    //   console.log(localStorageService.get('sandwich'));
-    // };
       
     // Array value randomizer helper function
     var selectOneFrom = function(array) {
@@ -43,6 +36,16 @@ angular.module('gooseSandwichApp')
     };
 
     var attach = {
+      getAllSandwiches: function(callback) {
+        $http.get('/api/sandwiches')
+        .success(function(sandwiches){
+          callback(andwichs);
+        })
+        .error(function(err) {
+          console.log("Error getting all sandwiches", err);
+        });
+      },
+
       getMatchingSandwich: function(meat, cheese, sauce, callback) {
         var sandwichPrefs = {
           meat: meat,
@@ -63,7 +66,7 @@ angular.module('gooseSandwichApp')
           callback(newSandwich);
         })
         .error(function(err) {
-          console.log("Error getting sandwiches", err);
+          console.log("Error getting matching sandwiches", err);
         });
       },
 
@@ -77,7 +80,7 @@ angular.module('gooseSandwichApp')
           callback(newSandwich);
         })
         .error(function(err) {
-          console.log("Error getting sandwiches", err);
+          console.log("Error getting random sandwiches", err);
         });
       },
     };
