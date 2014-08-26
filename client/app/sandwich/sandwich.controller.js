@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gooseSandwichApp')
-  .controller('SandwichCtrl', function ($scope, $window, Sandwich, Auth, Tweet, localStorageService) {
+  .controller('SandwichCtrl', function ($scope, $window, $state, Sandwich, Auth, Tweet, localStorageService) {
     $scope.sandwich = localStorageService.get('sandwich');
 
     $scope.isLoggedIn = Auth.isLoggedIn;
@@ -17,9 +17,15 @@ angular.module('gooseSandwichApp')
     };
 
     $scope.orderSandwich = function() {
-      // Maybe add some random tony compliment at the end? or Tony hashtag?
-      var order = { tweet: "(at) thegoosemen the I just ordered a " + $scope.sandwich.name + " from @thegoosewheel. #righttherethatis" };
-      Tweet.sendTweet(order);
+      var isConfirmed = confirm("Please make ABSOLUTELY SURE that you actually want this sandwich made. Tony WILL make it if you hit ok, don't leave him hanging.")
+      
+      if (isConfirmed) {
+        // Maybe add some random tony compliment at the end? or Tony hashtag?
+        var order = { tweet: "(at) thegoosemen the I just ordered a " + $scope.sandwich.name + " from @thegoosewheel. #righttherethatis" };
+        Tweet.sendTweet(order);
+        $window.location.href = '/enjoy'
+        // $state.go('enjoy');
+      }
     };
 
   });
