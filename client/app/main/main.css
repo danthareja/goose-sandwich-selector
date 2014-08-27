@@ -60,7 +60,8 @@ body {
 }
 
 .get-sandwich {
-    margin-top: 30%
+    margin-top: 14%;
+    margin-left: 10%;
 }
 
 .btn-xlarge {
@@ -78,6 +79,7 @@ body {
 }
 
 .header-picky {
+    margin-top: 50px;
     color: #9C7965;
 }
 
@@ -95,7 +97,7 @@ body {
 }
 
 .menu-selection {
-    color: #C5A390;
+    color: #87C297;
 }
 
 .footer {
