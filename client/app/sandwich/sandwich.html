@@ -8,7 +8,7 @@
   </div>
   <!-- RANDOMIZE THESE SAYINGS -->
   <div ng-show="sandwich!==null && isProcessing===false" class="container">
-    <h1>How does a {{sandwich.name}} sound?</h1>
+    <h1>{{message}}</h1>
   </div>
   <div ng-show="isProcessing===true" class="container">
     <i class="fa fa-refresh fa-spin fa-5x"></i>
@@ -29,7 +29,6 @@
       </div>
     </div>
     <div class="row row-add-small-margin">
-      <!-- <a class="white" href="/">Try a new combo</a> -->
     </div>
   </div>
 </header>

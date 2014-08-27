@@ -6,6 +6,19 @@ angular.module('gooseSandwichApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isProcessing = false;
 
+    var setMessage = function(sandwich) {
+      var messages = [
+        "How does a tasty " + sandwich + " sound?",
+        "What do you think about a " + sandwich + "?",
+        "Any interest in a " + sandwich + "?",
+        "What if Tony made you a " + sandwich + "?",
+        "Want about a " + sandwich + "?"
+      ];
+      return messages[Math.floor(Math.random() * messages.length)];
+    }
+
+    $scope.message = setMessage(localStorageService.get('sandwich').name);
+
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;
     };
@@ -19,6 +32,7 @@ angular.module('gooseSandwichApp')
           $timeout(function() {
             $scope.isProcessing = false;
             $scope.sandwich = localStorageService.get('sandwich');
+            $scope.message = setMessage($scope.sandwich.name);
           }, Math.floor(Math.random() * 1500 + 250));
         });
       } else {
@@ -26,6 +40,7 @@ angular.module('gooseSandwichApp')
           $timeout(function(){
             $scope.isProcessing = false;
             $scope.sandwich = localStorageService.get('sandwich');
+            $scope.message = setMessage($scope.sandwich.name);
           }, Math.floor(Math.random() * 1500 + 250));
         });
       }
