@@ -16,11 +16,11 @@ angular.module('gooseSandwichApp')
       sendTweet: function(order) {
         $http.post('/api/users/tweet', order)
         .success(function(){
-          console.log("Tweet away!");
+          console.log('Tweet away!');
           $state.go('enjoy');
         })
         .error(function() {
-          console.log("error sending tweet");
+          console.log('error sending tweet');
         });
       },
     };
@@ -42,7 +42,7 @@ angular.module('gooseSandwichApp')
           callback(sandwiches);
         })
         .error(function(err) {
-          console.log("Error getting all sandwiches", err);
+          console.log('Error getting all sandwiches', err);
         });
       },
 
@@ -66,7 +66,7 @@ angular.module('gooseSandwichApp')
           callback(newSandwich);
         })
         .error(function(err) {
-          console.log("Error getting matching sandwiches", err);
+          console.log('Error getting matching sandwiches', err);
         });
       },
 
@@ -80,7 +80,7 @@ angular.module('gooseSandwichApp')
           callback(newSandwich);
         })
         .error(function(err) {
-          console.log("Error getting random sandwiches", err);
+          console.log('Error getting random sandwiches', err);
         });
       },
     };
