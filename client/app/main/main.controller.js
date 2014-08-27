@@ -20,7 +20,7 @@ angular.module('gooseSandwichApp')
     
     // Additional variable to make ng-repeat play nicely with radio buttons
     $scope.meatRadio = {model: 'bacon'};
-    $scope.cheeseRadio = {model: 'american'};
+    $scope.cheeseRadio = {model: 'any'};
     $scope.sauceRadio = {model: 'none'};
 
     // Animations active based on this property

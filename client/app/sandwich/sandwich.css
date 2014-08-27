@@ -2,28 +2,28 @@
     color: #fff;
     background-color: #E2BA6E;
     border-color: #CEAA66;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .btn-gold:focus, .btn-gold:hover, .btn-gold:active, .btn-gold.active, .open .dropdown-toggle.btn-gold {
     color: #fff;
     background-color: #CEAA66;
     border-color: #CEAA66;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .btn-twitter {
     color: #fff;
     background-color: #2daddc;
     border-color: #2BA3CF;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .btn-twitter:focus, .btn-twitter:hover, .btn-twitter:active, .btn-twitter.active, .open .dropdown-toggle.btn-twitter {
     color: #fff;
     background-color: #2BA3CF;
     border-color: #2BA3CF;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .confirm-tweet .modal-header {
