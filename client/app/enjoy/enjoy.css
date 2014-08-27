@@ -3,20 +3,20 @@
 }
 /* unvisited link */
 a:link.white{
-    color: #fff;
+    color: #F5E4C5;
 }
 
 /* visited link */
 a:visited.white{
-    color: #fff;
+    color: #F5E4C5;
 }
 
 /* mouse over link */
 a:hover.white{
-    color: #fff;
+    color: #F5E4C5;
 }
 
 /* selected link */
 a:active.white{
-    color: #fff;
+    color: #F5E4C5;
 }

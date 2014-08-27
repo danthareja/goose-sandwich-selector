@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gooseSandwichApp')
-  .controller('MainCtrl', function ($window, $scope, $state, Sandwich) {
+  .controller('MainCtrl', function ($window, $scope, $state, $timeout, Sandwich) {
     $scope.sandwichList = [];
     $scope.currentSandwiches = [];
 
@@ -26,6 +26,7 @@ angular.module('gooseSandwichApp')
     // Animations active based on this property
     $scope.isProcessing = false;
 
+    // Magical function for the angular way
     $scope.containsCheese = function(cheese){
       $scope.currentSandwiches = _.filter($scope.sandwichList, function(sandwich){
         return _.contains(sandwich.meat, $scope.meatRadio.model);
@@ -33,12 +34,11 @@ angular.module('gooseSandwichApp')
       return _.some($scope.currentSandwiches, {cheese: cheese});
     };
 
+    // Even more magical function for the angular way
     $scope.containsSauce = function(sauce) {
       $scope.currentSandwiches = _.filter($scope.sandwichList, function(sandwich){
-        // console.log(_.contains(sandwich.meat, $scope.meatRadio.model) && _.contains(sandwich.cheese, $scope.cheeseRadio.model));
         return _.contains(sandwich.meat, $scope.meatRadio.model) && _.contains(sandwich.cheese, $scope.cheeseRadio.model);
       });
-      console.log($scope.currentSandwiches);
       return _.some($scope.currentSandwiches, function(sandwich){
         return _.contains(sandwich.sauce, sauce);
       });
@@ -48,8 +48,10 @@ angular.module('gooseSandwichApp')
     $scope.getRandomSandwich = function() {
       $scope.isProcessing = true;
       Sandwich.getRandomSandwich(function(){
-        $scope.isProcessing = false;
-        $state.go('sandwich');
+        $timeout(function(){
+          $scope.isProcessing = false;
+          $state.go('sandwich');
+        }, Math.floor(Math.random() * 1500 + 250));
       });
     };
 

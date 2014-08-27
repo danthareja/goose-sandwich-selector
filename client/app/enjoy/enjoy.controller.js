@@ -5,8 +5,8 @@ angular.module('gooseSandwichApp')
 
     $scope.redirectToTwitter = function(){
       var user = Auth.getCurrentUser();
-      $window.location.href = "https://twitter.com/" + user.twitter.screen_name;
-    }
+      $window.open("https://twitter.com/" + user.twitter.screen_name,"_blank");
+    };
 
     $scope.logout = function() {
       Auth.logout();

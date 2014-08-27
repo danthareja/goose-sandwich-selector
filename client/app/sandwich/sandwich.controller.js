@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('gooseSandwichApp')
-  .controller('SandwichCtrl', function ($scope, $window, $state, Sandwich, Auth, Tweet, localStorageService, dialogs) {
+  .controller('SandwichCtrl', function ($scope, $window, $state, $timeout, Sandwich, Auth, Tweet, localStorageService, dialogs) {
     $scope.sandwich = localStorageService.get('sandwich');
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isProcessing = false;
@@ -16,13 +16,17 @@ angular.module('gooseSandwichApp')
       var sandwichPrefs = localStorageService.get('sandwichPrefs');
       if (sandwichPrefs) {
         Sandwich.getMatchingSandwich(sandwichPrefs.meat, sandwichPrefs.cheese, sandwichPrefs.sauce, function() {
-          $scope.isProcessing = false;
-          $scope.sandwich = localStorageService.get('sandwich');
+          $timeout(function() {
+            $scope.isProcessing = false;
+            $scope.sandwich = localStorageService.get('sandwich');
+          }, Math.floor(Math.random() * 1500 + 250));
         });
       } else {
         Sandwich.getRandomSandwich(function() {
-          $scope.isProcessing = false;
-          $scope.sandwich = localStorageService.get('sandwich');
+          $timeout(function(){
+            $scope.isProcessing = false;
+            $scope.sandwich = localStorageService.get('sandwich');
+          }, Math.floor(Math.random() * 1500 + 250));
         });
       }
     };

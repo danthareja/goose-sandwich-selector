@@ -1,11 +1,36 @@
+.btn-gold {
+    color: #fff;
+    background-color: #E2BA6E;
+    border-color: #CEAA66;
+}
+
+.btn-gold:focus, .btn-gold:hover, .btn-gold:active, .btn-gold.active, .open .dropdown-toggle.btn-gold {
+    color: #fff;
+    background-color: #CEAA66;
+    border-color: #CEAA66;
+}
+
+.btn-twitter {
+    color: #fff;
+    background-color: #2daddc;
+    border-color: #2BA3CF;
+}
+
+.btn-twitter:focus, .btn-twitter:hover, .btn-twitter:active, .btn-twitter.active, .open .dropdown-toggle.btn-twitter {
+    color: #fff;
+    background-color: #2BA3CF;
+    border-color: #2BA3CF;
+}
+
 .confirm-tweet .modal-header {
-    background-color: #f0ad4e;
-    border-color: #eea236;
+    background-color: #E2BA6E;
+    border-color: #CEAA66;
 }
 
 .confirm-tweet .modal-body {
     font-size: 20px;
     font-weight: bold;
+    color: #9C7965;
 }
 
 /* 'Yes' button */
@@ -39,9 +64,9 @@
     letter-spacing: -1px;
 }
 
-.tweet {
+/*.tweet {
     border-color: #96641C;
-}
+}*/
 
 .row-add-margin {
     margin-top: 35px; 
@@ -54,12 +79,11 @@
 .hero-unit {
     position: relative;
     padding: 30px 15px;
-    color: #F5F5F5;
+    color: #F5E4C5;
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-    background: #4393B9;
+    background: #9C7965;
 }
-
 .full-width {
   width: 100%;
 }
